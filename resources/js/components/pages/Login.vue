@@ -24,14 +24,15 @@
     data() {
       return {
         loginForm: {
-          email: '',
-          password: '',
+          email: 'a@a',
+          password: 'aabbccddeeff',
         }
       }
     },
     methods: {
       login() {
-        console.log('ログインする')
+        this.$store.dispatch('auth/login', this.loginForm);
+        this.$router.push('/');
       }
     }
   }
