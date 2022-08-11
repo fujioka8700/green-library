@@ -1,9 +1,47 @@
 <template>
   <div>
+    <header>
+      <Navbar />
+    </header>
     <main>
       <div class="container">
         <RouterView />
       </div>
     </main>
+    <footer>
+      <Footer />
+    </footer>
   </div>
 </template>
+
+<script>
+  import {
+    INTERNAL_SERVER_ERROR
+  } from '../util';
+
+  import Navbar from './Navbar';
+  import Footer from './Footer';
+
+  export default {
+    components: {
+      Navbar,
+      Footer
+    },
+    computed: {
+      errorCode() {
+        return this.$store.state.error.code;
+      },
+    },
+    watch: {
+      errorCode: {
+        handler(val) {
+          if (val === INTERNAL_SERVER_ERROR) {
+            this.$router.push('/500');
+          }
+        },
+        immediate: true,
+      },
+    },
+  }
+
+</script>
