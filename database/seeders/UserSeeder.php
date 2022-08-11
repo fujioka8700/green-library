@@ -19,6 +19,8 @@ class UserSeeder extends Seeder
             'name' => '田中太郎',
             'email' => 'a@a',
             'password' => Hash::make('aabbccddeeff'),
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
     }
 }

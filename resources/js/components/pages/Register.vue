@@ -33,7 +33,7 @@
           <input type="password" class="form-control" id="InputPasswordConfirmation"
             v-model="registerForm.password_confirmation">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">会員登録</button>
       </form>
     </div>
   </div>
