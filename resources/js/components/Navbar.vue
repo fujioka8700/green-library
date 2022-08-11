@@ -6,9 +6,16 @@
       </RouterLink>
     </div>
     <div v-if="! isLogin">
-      <RouterLink to="/login">
-        ログイン
-      </RouterLink>
+      <div>
+        <RouterLink to="/login">
+          ログイン
+        </RouterLink>
+      </div>
+      <div>
+        <RouterLink to="/register">
+          会員登録
+        </RouterLink>
+      </div>
     </div>
   </div>
 </template>

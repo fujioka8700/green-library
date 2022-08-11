@@ -1,6 +1,6 @@
 <template>
   <div v-if="isLogin">
-    <span @click="logout">ログアウト</span>
+    <a href="" @click="logout">ログアウト</a>
   </div>
 </template>
 
@@ -16,16 +16,12 @@
       }),
     },
     methods: {
-      logout() {
-        this.$store.dispatch('auth/logout');
+      async logout() {
+        await this.$store.dispatch('auth/logout');
 
         this.$router.push('/login');
-      }
-    }
+      },
+    },
   }
 
-const a = [
-        'isLogin', 'auth/check'
-]
-console.log(...a)
 </script>

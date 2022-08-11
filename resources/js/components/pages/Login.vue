@@ -1,10 +1,18 @@
 <template>
   <div>
     <div>
-      Login
+      ログイン
     </div>
     <div>
       <form @submit.prevent="login">
+        <div v-if="loginErrors">
+          <ul v-if="loginErrors.email">
+            <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="loginErrors.password">
+            <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
+          </ul>
+        </div>
         <div class="mb-3">
           <label for="InputEmail" class="form-label">Email address</label>
           <input type="email" class="form-control" id="InputEmail" v-model="loginForm.email">
@@ -29,10 +37,21 @@
         }
       }
     },
+    computed: {
+      apiStatus() {
+        return this.$store.state.auth.apiStatus;
+      },
+      loginErrors() {
+        return this.$store.state.auth.loginErrorMessages;
+      },
+    },
     methods: {
-      login() {
-        this.$store.dispatch('auth/login', this.loginForm);
-        this.$router.push('/');
+      async login() {
+        await this.$store.dispatch('auth/login', this.loginForm);
+
+        if (this.apiStatus) {
+          this.$router.push('/');
+        }
       }
     }
   }
