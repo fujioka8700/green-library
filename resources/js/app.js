@@ -17,6 +17,6 @@ const createApp = async () => {
     },
     template: '<App />',
   })
-}
+};
 
 createApp();

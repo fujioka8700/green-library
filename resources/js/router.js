@@ -6,6 +6,8 @@ import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import SystemError from './components/pages/errors/System';
 
+import store from './store';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -16,15 +18,29 @@ const routes = [
   {
     path: '/login',
     component: Login,
+    beforeEnter: (to, from, next) => {
+      if (store.getters['auth/check']) {
+        next('/');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/register',
     component: Register,
+    beforeEnter: (to, from, next) => {
+      if (store.getters['auth/check']) {
+        next('/');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/500',
     component: SystemError,
-  }
+  },
 ];
 
 const router = new VueRouter({
