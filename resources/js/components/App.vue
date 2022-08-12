@@ -25,7 +25,7 @@
   export default {
     components: {
       Navbar,
-      Footer
+      Footer,
     },
     computed: {
       errorCode() {

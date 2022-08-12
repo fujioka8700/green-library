@@ -51,6 +51,9 @@
         }
       }
     },
+    created() {
+      this.clearError();
+    },
     computed: {
       apiStatus() {
         return this.$store.state.auth.apiStatus;
@@ -66,6 +69,9 @@
         if (this.apiStatus) {
           this.$router.push('/');
         }
+      },
+      clearError() {
+        this.$store.commit('auth/setRegisterErrorMessages', null);
       },
     },
   }
