@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   OK,
   CREATED,
-  UNPROCESSABLE_ENTITY
+  UNPROCESSABLE_ENTITY,
 } from "../util";
 
 const state = {
@@ -47,15 +47,14 @@ const actions = {
 
     context.commit('setApiStatus', false);
     context.commit('error/setCode', response.status, {
-      root: true
+      root: true,
     });
   },
 
   // ログイン
   async login(context, data) {
     context.commit('setApiStatus', null);
-    const response = await axios.post('/api/login', data)
-      .catch(err => err.response || err);
+    const response = await axios.post('/api/login', data);
 
     if (response.status === OK) {
       context.commit('setApiStatus', true);
@@ -68,7 +67,7 @@ const actions = {
       context.commit('setLoginErrorMessages', response.data.errors);
     } else {
       context.commit('error/setCode', response.status, {
-        root: true
+        root: true,
       });
     }
   },
@@ -86,15 +85,14 @@ const actions = {
 
     context.commit('setApiStatus', false);
     context.commit('error/setCode', response.status, {
-      root: true
+      root: true,
     });
   },
 
   // 会員登録
   async register(context, data) {
     context.commit('setApiStatus', null);
-    const response = await axios.post('/api/register', data)
-      .catch(err => err.response || err);;
+    const response = await axios.post('/api/register', data);
 
     if (response.status === CREATED) {
       context.commit('setApiStatus', true);
@@ -107,7 +105,7 @@ const actions = {
       context.commit('setRegisterErrorMessages', response.data.errors);
     } else {
       context.commit('error/setCode', response.status, {
-        root: true
+        root: true,
       });
     }
   },
