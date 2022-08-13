@@ -5,6 +5,7 @@ import PlantsList from './components/pages/PlantsList';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import SystemError from './components/pages/errors/System';
+import NotFound from './components/pages/errors/NotFound';
 
 import store from './store';
 
@@ -40,6 +41,10 @@ const routes = [
   {
     path: '/500',
     component: SystemError,
+  },
+  {
+    path: '*',
+    component: NotFound,
   },
 ];
 
