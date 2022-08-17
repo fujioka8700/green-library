@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Plant;
 use App\Http\Resources\Plant as PlantResource;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePlantRequest;
 
 class PlantController extends Controller
 {
@@ -26,7 +27,7 @@ class PlantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePlantRequest $request)
     {
         $plant = Plant::create($request->all());
 

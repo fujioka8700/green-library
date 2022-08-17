@@ -24,6 +24,13 @@ class StorePlantApiTest extends TestCase
       'body' => $this->faker->text(200),
     ]);
 
-    dump($response->json());
+    $plant = Plant::first();
+
+    $response->assertStatus(201)->assertJson([
+      'data' => [
+        'name' => $plant->name,
+        'body' => $plant->body,
+      ],
+    ]);
   }
 }
