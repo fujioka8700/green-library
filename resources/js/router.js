@@ -12,10 +12,15 @@ import store from './store';
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     component: PlantsList,
+    props: route => {
+      const page = route.query.page;
+      return {
+        page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
+      }
+    },
   },
   {
     path: '/login',

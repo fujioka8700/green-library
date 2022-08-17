@@ -24,14 +24,23 @@
     components: {
       Plant,
     },
+    props: {
+      page: {
+        type: Number,
+        required: false,
+        default: 1,
+      }
+    },
     data() {
       return {
         plants: [],
+        currentPage: 0,
+        lastPage: 0,
       }
     },
     methods: {
       async fetchPlants() {
-        const response = await axios.get('/api/plants?page=1');
+        const response = await axios.get(`/api/plants?page=${this.page}`);
 
         if (response.status !== OK) {
           this.$store.commit('error/setCode', response.status);
@@ -39,6 +48,8 @@
         }
 
         this.plants = response.data.data;
+        this.currentPage = response.data.meta.current_page;
+        this.lastPage = response.data.meta.last_page;
       },
     },
     watch: {
