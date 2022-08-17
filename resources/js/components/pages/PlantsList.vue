@@ -10,12 +10,19 @@
         :item='plant'
       />
     </div>
+    <div>
+      <Pagination
+        :current-page="currentPage"
+        :last-page="lastPage"
+      />
+    </div>
   </div>
 </template>
 
 <script>
   import axios from "axios";
   import Plant from './Plant';
+  import Pagination from '../Pagination';
   import {
     OK
   } from '../../util';
@@ -23,6 +30,7 @@
   export default {
     components: {
       Plant,
+      Pagination,
     },
     props: {
       page: {
