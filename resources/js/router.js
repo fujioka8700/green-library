@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import PlantsList from './components/pages/PlantsList';
+import PlantStore from './components/pages/PlantStore';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
 import SystemError from './components/pages/errors/System';
@@ -37,6 +38,10 @@ const routes = [
         next();
       }
     },
+  },
+  {
+    path: '/store',
+    component: PlantStore,
   },
   {
     path: '/500',

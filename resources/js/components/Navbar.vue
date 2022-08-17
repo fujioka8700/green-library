@@ -17,6 +17,13 @@
         </RouterLink>
       </div>
     </div>
+    <div v-if="isLogin">
+      <div>
+        <RouterLink to="/store">
+          植物登録
+        </RouterLink>
+      </div>
+    </div>
   </div>
 </template>
 
