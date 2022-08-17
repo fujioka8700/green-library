@@ -9,8 +9,12 @@ class Plant extends Model
 {
   use HasFactory;
 
+  // 指定したカラムのみ値の代入を許可する
   protected $fillable = [
     'name',
     'body',
   ];
+
+  // １ページ中に表示するアイテムの数
+  protected $perPage = 15;
 }

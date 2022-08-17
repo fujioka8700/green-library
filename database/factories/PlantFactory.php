@@ -14,8 +14,10 @@ class PlantFactory extends Factory
     public function definition()
     {
         return [
-          'name' => $this->faker->text(50),
+          'name' => $this->faker->name,
           'body' => $this->faker->text(200),
+          'created_at' => date('Y-m-d H:i:s'),
+          'updated_at' => date('Y-m-d H:i:s'),
         ];
     }
 }

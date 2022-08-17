@@ -16,7 +16,7 @@ class PlantController extends Controller
      */
     public function index()
     {
-        $plants = Plant::paginate(15);
+        $plants = Plant::orderBy('id', 'desc')->paginate();
 
         return PlantResource::collection($plants);
     }
