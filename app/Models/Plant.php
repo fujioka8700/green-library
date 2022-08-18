@@ -15,6 +15,6 @@ class Plant extends Model
     'body',
   ];
 
-  // １ページ中に表示するアイテムの数
+  // 1ページ中に表示するアイテムの数
   protected $perPage = 15;
 }
