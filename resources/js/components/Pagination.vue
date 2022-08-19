@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      Pagination
+      <!-- Pagination -->
     </div>
     <div>
       <nav aria-label="Page navigation example">

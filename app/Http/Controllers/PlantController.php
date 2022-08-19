@@ -9,6 +9,12 @@ use App\Http\Requests\StorePlantRequest;
 
 class PlantController extends Controller
 {
+    public function __construct()
+    {
+        // 認証が必要
+        $this->middleware('auth')->except(['index']);
+    }
+
     /**
      * リソースのリストを表示します。
      *

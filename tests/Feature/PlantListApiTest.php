@@ -20,7 +20,7 @@ class PlantListApiTest extends TestCase
   {
     Plant::factory(5)->create();
 
-    $response = $this->getJson(route('plant.index'));
+    $response = $this->getJson(route('plants.index'));
 
     $plants = Plant::orderBy('id', 'desc')->get();
 

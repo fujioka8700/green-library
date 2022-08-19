@@ -48,6 +48,13 @@ const routes = [
   {
     path: '/store',
     component: PlantStore,
+    beforeEnter: (to, from, next) => {
+      if (! store.getters['auth/check']) {
+        next('/');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/500',
