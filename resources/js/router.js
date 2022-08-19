@@ -16,6 +16,12 @@ const routes = [
   {
     path: '/',
     component: PlantsList,
+    props: route => {
+      const page = route.query.page;
+      return {
+        page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1
+      }
+    },
   },
   {
     path: '/login',
@@ -56,6 +62,12 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    return {
+      x: 0,
+      y: 0
+    }
+  },
 });
 
 export default router;
