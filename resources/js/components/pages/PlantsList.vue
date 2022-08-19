@@ -14,6 +14,7 @@
       <Pagination
         :current-page="currentPage"
         :last-page="lastPage"
+        :pagination-numbers="paginationNumbers"
       />
     </div>
   </div>
@@ -42,6 +43,7 @@
     data() {
       return {
         plants: [],
+        paginationNumbers: [],
         currentPage: 0,
         lastPage: 0,
       }
@@ -55,9 +57,15 @@
           return false;
         }
 
+        // 植物のデータ
         this.plants = response.data.data;
+
+        // ページネーション
         this.currentPage = response.data.meta.current_page;
         this.lastPage = response.data.meta.last_page;
+        this.paginationNumbers = Array.from(Array(response.data.meta.last_page).keys()).map(function(value){
+          return value + 1;
+        });
       },
     },
     watch: {

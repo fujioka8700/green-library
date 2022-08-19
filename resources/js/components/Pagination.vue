@@ -15,9 +15,14 @@
               Previous
             </RouterLink>
           </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li v-for="number in paginationNumbers" :key="number" class="page-item">
+            <RouterLink
+              :to="`/?page=${number}`"
+              class="page-link"
+              :class="{ active: number === currentPage }"
+            >{{ number }}
+            </RouterLink>
+          </li>
           <li class="page-item">
             <RouterLink
               v-if="! isLastPage"
@@ -36,6 +41,10 @@
 <script>
   export default {
     props: {
+      paginationNumbers: {
+        type: Array,
+        required: true,
+      },
       currentPage: {
         type: Number,
         required: true,
