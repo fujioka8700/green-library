@@ -12,16 +12,23 @@
               :to="`/?page=${currentPage - 1}`"
               class="page-link"
             >
-              Previous
+              &lt;&lt;
             </RouterLink>
+            <span v-else class="page-link disabled">
+              &lt;&lt;
+            </span>
           </li>
-          <li v-for="number in paginationNumbers" :key="number" class="page-item">
+          <li v-for="(number, index) in paginationNumbers" :key="index" class="page-item">
             <RouterLink
+              v-if="number >= 1"
               :to="`/?page=${number}`"
               class="page-link"
               :class="{ active: number === currentPage }"
             >{{ number }}
             </RouterLink>
+            <span v-else class="page-link disabled">
+              {{ number }}
+            </span>
           </li>
           <li class="page-item">
             <RouterLink
@@ -29,8 +36,11 @@
               :to="`/?page=${currentPage + 1}`"
               class="page-link"
             >
-              Next
+              &gt;&gt;
             </RouterLink>
+            <span v-else class="page-link disabled">
+              &gt;&gt;
+            </span>
           </li>
         </ul>
       </nav>

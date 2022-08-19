@@ -25,7 +25,8 @@
   import Plant from './Plant';
   import Pagination from '../Pagination';
   import {
-    OK
+    OK,
+    pagination,
   } from '../../util';
 
   export default {
@@ -63,9 +64,7 @@
         // ページネーション
         this.currentPage = response.data.meta.current_page;
         this.lastPage = response.data.meta.last_page;
-        this.paginationNumbers = Array.from(Array(response.data.meta.last_page).keys()).map(function(value){
-          return value + 1;
-        });
+        this.paginationNumbers = pagination(this.currentPage, this.lastPage);
       },
     },
     watch: {
