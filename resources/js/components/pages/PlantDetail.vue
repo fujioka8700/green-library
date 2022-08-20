@@ -4,30 +4,39 @@
       Plant Detail
     </div>
     <div>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th scope="row">植物名</th>
-            <td>アネモネ・パルマータ</td>
-          </tr>
-          <tr>
-            <th scope="row">学名</th>
-            <td>Anemone palmata</td>
-          </tr>
-          <tr>
-            <th scope="row">科名</th>
-            <td>キンポウゲ科</td>
-          </tr>
-          <tr>
-            <th scope="row">属名</th>
-            <td>イチリンソウ属</td>
-          </tr>
-          <tr>
-            <th scope="row">原産地</th>
-            <td>ヨーロッパ</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="row">
+        <div class="col">
+          <div class="text-center">
+            <img src="https://placehold.jp/200x200.png" class="img-fluid" alt="...">
+          </div>
+        </div>
+        <div class="col">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">植物名</th>
+                <td>アネモネ・パルマータ</td>
+              </tr>
+              <tr>
+                <th scope="row">学名</th>
+                <td>Anemone palmata</td>
+              </tr>
+              <tr>
+                <th scope="row">科名</th>
+                <td>キンポウゲ科</td>
+              </tr>
+              <tr>
+                <th scope="row">属名</th>
+                <td>イチリンソウ属</td>
+              </tr>
+              <tr>
+                <th scope="row">原産地</th>
+                <td>ヨーロッパ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       <h2>アネモネ・パルマータの特徴</h2>
       <p>
         アネモネ・パルマータは、キンポウゲ科の原種のアネモネのひとつです。アネモネというと球根の花が一般的ですが、パルマータは宿根草です。宿根草タイプのアネモネの中では小型で、かわいらしいサイズです。

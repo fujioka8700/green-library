@@ -1,13 +1,15 @@
 <template>
-  <div class="mb-2">
+  <div>
     <div>
       <!-- Plant -->
     </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-text">{{ item.data.name }}</p>
-        <p class="card-text">{{ item.data.body }}</p>
-      </div>
+    <div class="card mb-2">
+      <RouterLink :to="`/plants/${item.data.id}`" class="text-body text-decoration-none">
+        <div class="card-body">
+          <p class="card-text">{{ item.data.name }}</p>
+          <p class="card-text">{{ item.data.body }}</p>
+        </div>
+      </RouterLink>
     </div>
   </div>
 </template>
