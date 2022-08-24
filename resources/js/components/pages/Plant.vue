@@ -4,7 +4,7 @@
       <!-- Plant -->
     </div>
     <div class="card mb-2">
-      <RouterLink :to="`/plants/${item.data.id}`" class="text-body text-decoration-none">
+      <RouterLink :to="`/plants/${item.data.id}`" class="text-body text-decoration-none clickable">
         <div class="card-body">
           <p class="card-text">{{ item.data.name }}</p>
           <p class="card-text">{{ item.data.body }}</p>
