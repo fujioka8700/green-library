@@ -19,5 +19,5 @@ Route::get('/reflesh-token', function (Request $request) {
 });
 
 Route::get('/plants', [PlantController::class, 'index'])->name('plants.index');
-Route::get('/plants/{id}', [PlantController::class, 'show']);
-Route::post('/plants', [PlantController::class, 'store'])->name('plants.store');
+Route::get('/plants/{id}', [PlantController::class, 'show'])->name('plant.show');
+Route::post('/plants', [PlantController::class, 'store'])->name('plant.store');

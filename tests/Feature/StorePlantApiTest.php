@@ -29,7 +29,7 @@ class StorePlantApiTest extends TestCase
    */
   public function test_植物を登録する()
   {
-    $response = $this->actingAs($this->user)->postJson(route('plants.store'), [
+    $response = $this->actingAs($this->user)->postJson(route('plant.store'), [
       'name' => $this->faker->name(),
       'body' => $this->faker->text(200),
     ]);
