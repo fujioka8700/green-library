@@ -9,6 +9,12 @@ use App\Http\Requests\StorePlantRequest;
 
 class PlantController extends Controller
 {
+    public function __construct()
+    {
+        // 認証が必要
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * リソースのリストを表示します。
      *
@@ -24,7 +30,7 @@ class PlantController extends Controller
     /**
      * 新しく作成したリソースをストレージに保存します。
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Resources\Plant as PlantResource $request
      * @return \Illuminate\Http\Response
      */
     public function store(StorePlantRequest $request)
@@ -37,10 +43,10 @@ class PlantController extends Controller
     /**
      * 指定されたリソースを表示します。
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         $plant = Plant::find($id);
 

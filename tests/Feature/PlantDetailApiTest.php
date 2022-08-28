@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class PlantListApiTest extends TestCase
+class PlantDetailApiTest extends TestCase
 {
   use RefreshDatabase;
 
@@ -18,26 +18,20 @@ class PlantListApiTest extends TestCase
    */
   public function test_正しい構造のJSONを返却する()
   {
-    Plant::factory(5)->create();
+    Plant::factory()->create();
+    $plant = Plant::first();
 
-    $response = $this->getJson(route('plants.index'));
+    $response = $this->getJson(route('plant.show', [
+      'id' => $plant->id,
+    ]));
 
-    $plants = Plant::orderBy('id', 'desc')->get();
-
-    $expected_data = $plants->map(function($plant) {
-      return [
+    $response->assertStatus(200)
+      ->assertJsonFragment([
         'data' => [
           'id' => $plant->id,
           'name' => $plant->name,
           'body' => $plant->body,
         ],
-      ];
-    })->all();
-
-    $response->assertStatus(200)
-      ->assertJsonCount(5, 'data')
-      ->assertJsonFragment([
-        'data' => $expected_data,
-    ]);
+      ]);
   }
 }

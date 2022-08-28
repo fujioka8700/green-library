@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use App\Models\Plant;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -12,6 +13,15 @@ class StorePlantApiTest extends TestCase
   use WithFaker;
   use RefreshDatabase;
 
+  use RefreshDatabase;
+
+  public function setUp(): void
+  {
+      parent::setUp();
+
+      $this->user = User::factory()->create();
+  }
+
   /**
    * 植物を登録する
    *
@@ -19,7 +29,7 @@ class StorePlantApiTest extends TestCase
    */
   public function test_植物を登録する()
   {
-    $response = $this->postJson(route('plants.store'), [
+    $response = $this->actingAs($this->user)->postJson(route('plant.store'), [
       'name' => $this->faker->name(),
       'body' => $this->faker->text(200),
     ]);

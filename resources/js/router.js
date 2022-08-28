@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import PlantsList from './components/pages/PlantsList';
+import PlantDetail from './components/pages/PlantDetail';
 import PlantStore from './components/pages/PlantStore';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
@@ -35,6 +36,11 @@ const routes = [
     },
   },
   {
+    path: '/plants/:id',
+    component: PlantDetail,
+    props: true,
+  },
+  {
     path: '/register',
     component: Register,
     beforeEnter: (to, from, next) => {
@@ -48,6 +54,13 @@ const routes = [
   {
     path: '/store',
     component: PlantStore,
+    beforeEnter: (to, from, next) => {
+      if (! store.getters['auth/check']) {
+        next('/');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/500',

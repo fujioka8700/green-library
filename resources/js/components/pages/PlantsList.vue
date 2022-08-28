@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      PlantsList
+      <!-- PlantsList -->
     </div>
     <div>
       <Plant
