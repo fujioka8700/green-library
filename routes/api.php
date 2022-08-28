@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PlantController;
 use Illuminate\Support\Facades\Auth;
 
+// ログイン、会員登録
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -18,6 +19,8 @@ Route::get('/reflesh-token', function (Request $request) {
   return response()->json();
 });
 
+// 植物を扱うページ
 Route::get('/plants', [PlantController::class, 'index'])->name('plants.index');
-Route::get('/plants/{id}', [PlantController::class, 'show'])->name('plant.show');
-Route::post('/plants', [PlantController::class, 'store'])->name('plant.store');
+Route::post('/plants', [PlantController::class, 'store'])->name('plants.store');
+Route::get('/plants/{id}', [PlantController::class, 'show'])->name('plants.show');
+Route::put('/plants/{id}', [PlantController::class, 'update'])->name('plants.update');

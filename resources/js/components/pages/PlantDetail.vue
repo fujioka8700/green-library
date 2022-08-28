@@ -10,12 +10,12 @@
             <img src="https://placehold.jp/200x200.png" class="img-fluid" alt="...">
           </div>
         </div>
-        <div class="col">
+        <div class="col" v-if="plant">
           <table class="table">
             <tbody>
               <tr>
                 <th scope="row">植物名</th>
-                <td v-if="plant">{{ plant.name }}</td>
+                <td>{{ plant.name }}</td>
               </tr>
               <tr>
                 <th scope="row">学名</th>
@@ -37,8 +37,8 @@
           </table>
         </div>
       </div>
-      <h2 v-if="plant">{{ plant.name }}の特徴</h2>
-      <p v-if="plant">
+      <h2>{{ plant.name }}の特徴</h2>
+      <p>
         {{ plant.body }}
       </p>
     </div>

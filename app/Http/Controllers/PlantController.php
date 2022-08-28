@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Plant;
 use App\Http\Resources\Plant as PlantResource;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePlantRequest;
+use App\Http\Requests\PlantRequest;
 
 class PlantController extends Controller
 {
@@ -18,7 +18,7 @@ class PlantController extends Controller
     /**
      * リソースのリストを表示します。
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\Plant as PlantResource
      */
     public function index()
     {
@@ -30,10 +30,10 @@ class PlantController extends Controller
     /**
      * 新しく作成したリソースをストレージに保存します。
      *
-     * @param \App\Http\Resources\Plant as PlantResource $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\PlantRequest
+     * @return \App\Http\Resources\Plant as PlantResource
      */
-    public function store(StorePlantRequest $request)
+    public function store(PlantRequest $request)
     {
         $plant = Plant::create($request->all());
 
@@ -44,7 +44,7 @@ class PlantController extends Controller
      * 指定されたリソースを表示します。
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\Plant as PlantResource
      */
     public function show(int $id)
     {
@@ -56,13 +56,17 @@ class PlantController extends Controller
     /**
      * ストレージ内の指定されたリソースを更新します。
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param App\Http\Requests\PlantRequest
+     * @param int $id
+     * @return \App\Http\Resources\Plant as PlantResource
      */
-    public function update(Request $request, $id)
+    public function update(PlantRequest $request, int $id)
     {
-        //
+      Plant::where('id', $id)->update($request->all());
+
+      $plant = Plant::find($id);
+
+      return new PlantResource($plant);
     }
 
     /**

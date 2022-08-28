@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class StorePlantApiTest extends TestCase
+class PlantUpdateApiTest extends TestCase
 {
   use WithFaker;
   use RefreshDatabase;
@@ -21,24 +21,29 @@ class StorePlantApiTest extends TestCase
   }
 
   /**
-   * 植物を登録する
+   * 植物データを更新する
    *
    * @return void
    */
-  public function test_植物を登録する()
+  public function test_植物データを更新する()
   {
-    $response = $this->actingAs($this->user)->postJson(route('plants.store'), [
+    Plant::factory()->create();
+    $plant = Plant::first();
+
+    $response = $this->actingAs($this->user)->putJson(route('plants.update', [ 'id' => $plant->id ]), [
       'name' => $this->faker->name(),
       'body' => $this->faker->text(200),
     ]);
 
-    $plant = Plant::first();
-
-    $response->assertStatus(201)->assertJson([
+    // 更新前のデータ
+    $before_update_data = [
       'data' => [
+        'id' => $plant->id,
         'name' => $plant->name,
         'body' => $plant->body,
       ],
-    ]);
+    ];
+
+    $response->assertOk()->assertJsonMissing($before_update_data);
   }
 }

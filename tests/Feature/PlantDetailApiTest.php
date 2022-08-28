@@ -21,7 +21,7 @@ class PlantDetailApiTest extends TestCase
     Plant::factory()->create();
     $plant = Plant::first();
 
-    $response = $this->getJson(route('plant.show', [
+    $response = $this->getJson(route('plants.show', [
       'id' => $plant->id,
     ]));
 
